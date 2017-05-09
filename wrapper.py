@@ -26,7 +26,11 @@ class GymWrapper:
 
     def preprocess(self, state, new_game=False):
         state = state.mean(axis=2)  # Convert to single channel
-        state = sc.misc.imresize(state, (84, 84))  # Downsample
+
+        # KungFuMaster specific
+        state = state[95:155, 8:]
+        state = sc.misc.imresize(state, (40, 100))  # Downsample
+
         state = state * (1. / 255)  # Normalize
         state = state.astype(np.float32)  # Required by CNTK
         state = state.reshape(1, state.shape[0], state.shape[1])

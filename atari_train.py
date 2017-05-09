@@ -96,7 +96,7 @@ def main(env_name,
     gym_env = gym.make(env_name)
     env = GymWrapper(gym_env, action_repeat, stack_frames)
 
-    state_dim = (stack_frames, 84, 84)
+    state_dim = (stack_frames, 40, 100)
     action_dim = gym_env.action_space.n
 
     # Updater for decaying the value of epsilon
@@ -154,10 +154,10 @@ if __name__ == "__main__":
 
     # Core training arguments
     parser.add_argument('-e', '--episodes', type=int, default=10000, help='The number of episodes to train for')
-    parser.add_argument('-g', '--gamma', type=float, default=0.70, help='The discount rate')
+    parser.add_argument('-g', '--gamma', type=float, default=0.99, help='The discount rate')
     parser.add_argument('-lr', '--learning_rate', type=float, default=0.00025, help='The learning rate')
     parser.add_argument('-b', '--batch_size', type=int, default=64, help='The number of samples in training minibatch')
-    parser.add_argument('-mc', '--mem_cap', type=int, default=20000, help='The replay buffer capacity')
+    parser.add_argument('-mc', '--mem_cap', type=int, default=50000, help='The replay buffer capacity')
     parser.add_argument('-tf', '--target_update', type=int, default=50,
                         help='The frequency of updates to the target network')
     parser.add_argument('-ar', '--action_repeat', type=int, default=1,
@@ -171,7 +171,7 @@ if __name__ == "__main__":
     # Decay arguments
     parser.add_argument('-exp', '--use_exp', action='store_true', help='Set to use exponential decay for epsilon')
     parser.add_argument('-mne', '--min_epsilon', type=float, default=0.1, help='The minimum value of epsilon')
-    parser.add_argument('-de', '--decay_exp', type=float, default=2.878e-4, help='Exponential decay rate for epsilon')
+    parser.add_argument('-de', '--decay_exp', type=float, default=3.838e-4, help='Exponential decay rate for epsilon')
     parser.add_argument('-dl', '--decay_lin', type=float, default=-1.125e-4, help='Linear decay rate for epsilon')
 
     # Checkpointing and logging
