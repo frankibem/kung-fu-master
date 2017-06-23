@@ -38,3 +38,5 @@ To evaluate using the final trained model (you can turn off rendering), run:
 
 If training was interrupted before completion, you can still evaluate with one of the saved checkpoints:
 > python3 atari_eval.py chkpt/KungFuMaster-v0_<number>.dqn -c -r
+
+Watch the random agent [here](https://www.youtube.com/watch?v=oxN2fm0-YWA) and the trained agent [here](https://www.youtube.com/watch?v=Fsr8bSn7Mzk)
